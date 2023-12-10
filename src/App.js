@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './App.css'
+import { BrowserRouter,Routes,Route } from 'react-router-dom'
+import Home from './components/Hero/Home';
+import About from './components/Hero/About';
+import Contact from './components/Hero/Contact';
+import Services from './components/Hero/Services';
+import Hero from './components/Hero/Hero';
+import FlightsDisplay from './components/Body/Flights';
+import StoreProvider from './context/Provider';
+import SpecificFlight from './components/Body/SpecificFlight';
 
-function App() {
+const App = () => {
+   
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+    
+    <BrowserRouter>
+    <StoreProvider>
+    <Routes>
+      <Route path='/'exact element={<Home/>}>
+      <Route path='' exact element={<Hero/>}/>
+      <Route path='services' element={<Services/>}/>
+      <Route path='about' exact element={<About/>}/>
+      <Route path='contact' element={<Contact/>}/>
+      <Route path='/flights' element={<FlightsDisplay/>}/>
+      <Route path="/flights/:id" element={<SpecificFlight/>}/>
+      </Route>
+      
+    </Routes>
+    </StoreProvider>
+    </BrowserRouter>
+    
+    </>
+  )
 }
 
-export default App;
+export default App
