@@ -1,14 +1,15 @@
 import React from 'react';
 import './App.css'
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
-import Home from './components/Hero/Home';
-import About from './components/Hero/About';
-import Contact from './components/Hero/Contact';
-import Services from './components/Hero/Services';
-import Hero from './components/Hero/Hero';
-import FlightsDisplay from './components/Body/Flights';
-import StoreProvider from './context/Provider';
-import SpecificFlight from './components/Body/SpecificFlight';
+
+
+
+import LandingPage from './Pages/LandingPage/LandingPage';
+import FlightSearch from './Pages/FlightSearch/FlightSearch';
+import UserDetailsPage from './Pages/UserDetailsPage';
+import ConfirmationStatus from './Pages/ConfirmationStatus';
+import FlightsDisplay from './Pages/FlightsDisplay';
+import Header from './Component/Header/Header';
 
 const App = () => {
    
@@ -16,19 +17,16 @@ const App = () => {
     <>
     
     <BrowserRouter>
-    <StoreProvider>
+    <Header/>
     <Routes>
-      <Route path='/'exact element={<Home/>}>
-      <Route path='' exact element={<Hero/>}/>
-      <Route path='services' element={<Services/>}/>
-      <Route path='about' exact element={<About/>}/>
-      <Route path='contact' element={<Contact/>}/>
-      <Route path='/flights' element={<FlightsDisplay/>}/>
-      <Route path="/flights/:id" element={<SpecificFlight/>}/>
-      </Route>
+      <Route path='/'exact element={<LandingPage/>}/>
+      <Route path='/flight-searchs' element={<FlightSearch/>}/>
+      <Route path="/filtered-flights" element={<FlightsDisplay/>}/>
+      <Route path='/flight-booking' element={<UserDetailsPage/>}/>
+      <Route path='/confirmation' element={<ConfirmationStatus/>}/>
       
     </Routes>
-    </StoreProvider>
+    
     </BrowserRouter>
     
     </>
